@@ -28,17 +28,16 @@ const updateExchange = async () => {
 
 dropMenu.forEach((dropDown) => {
 	for (const curCode in country_list) {
-		const option = `<option value="${curCode}">${curCode}</option>`;
-		dropDown.insertAdjacentHTML("afterbegin", option);
-		if (dropDown.id === "currency_from" && curCode === "USD") {
-			document
-				.querySelector(`[value=${curCode}]`)
-				.setAttribute("selected", true);
-		} else {
-			document
-				.querySelector(`[value=${curCode}]`)
-				.setAttribute("selected", true);
+		const newOption = document.createElement("option");
+		newOption.textContent = curCode;
+		newOption.value = curCode;
+		if (
+			(dropDown.id === "currency_from" && curCode === "USD") ||
+			(dropDown.id === "currency_to" && curCode === "INR")
+		) {
+			newOption.selected = "selected";
 		}
+		dropDown.appendChild(newOption);
 	}
 
 	dropDown.addEventListener("change", (e) => {
