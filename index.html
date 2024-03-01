@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Money Converter</title>
+
+		<!-- * FONT REFERENCE -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- * CSS REFERENCE -->
+		<link rel="stylesheet" href="app/style.css" />
+	</head>
+	<body
+		class="font-poppin min-h-screen grid place-items-center text-darkLight bg-bodyBg"
+	>
+		<main class="bg-slate-50 px-7 py-9 w-max h-max rounded-md shadow-xl">
+			<h2 class="text-center text-3xl font-semibold mb-3">
+				Currency Converter
+			</h2>
+			<form
+				action="#"
+				class="grid grid-cols-3 gap-y-2 font-medium items-center"
+			>
+				<label for="currency_amount" class="col-span-3">Enter Amount</label>
+				<input
+					type="number"
+					id="currency_amount"
+					class="col-span-3 border-2 outline-none px-1 py-2 rounded-md mb-2"
+					min="0"
+				/>
+				<label for="convert_from" class="col-span-2">From</label>
+				<label for="convert_to">To</label>
+
+				<!-- * CURRENCY CONVERT FROM -->
+
+				<figure class="border-2 rounded-lg flex p-2 gap-2">
+					<img src="https://flagsapi.com/BE/flat/24.png" alt="BE" />
+					<select
+						id="currency_from"
+						name="currency_from"
+						class="outline-none"
+					></select>
+				</figure>
+
+				<figure class="grid place-items-center">
+					<ion-icon name="repeat-outline" size="large"></ion-icon>
+				</figure>
+
+				<!-- * CURRENCY CONVERT TO -->
+
+				<figure class="border-2 rounded-lg flex p-2 gap-2">
+					<img src="https://flagsapi.com/BE/flat/24.png" alt="BE" />
+					<select
+						id="currency_to"
+						name="currency_to"
+						class="outline-none"
+					></select>
+				</figure>
+				<p class="col-span-3 my-3" id="converted">1 USD = 82.09 INR</p>
+				<button class="col-span-3 bg-bodyBg text-slate-50 py-3 rounded-md">
+					Get Exchange Rate
+				</button>
+			</form>
+		</main>
+
+		<!-- * ICON REFERENCE -->
+		<script
+			type="module"
+			src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+		></script>
+		<script
+			nomodule
+			src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+		></script>
+
+		<!-- * JS REFERENCE -->
+		<script src="counties.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
