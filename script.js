@@ -12,18 +12,22 @@ const dropMenu = document.querySelectorAll("select");
 // * FUNCTIONS -
 
 const updateExchange = async () => {
-	const currTo = currencyTo.value.toLowerCase();
-	const currFrom = currencyFrom.value.toLowerCase();
-	const url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currFrom}/${currTo}.json`;
-	const response = await fetch(url);
-	const data = await response.json();
-	let currAmount = currencyAmount.value;
-	if (currAmount === "" || currAmount <= 0) {
-		currAmount = 1;
-		currencyAmount.value = 1;
+	try {
+		const currTo = currencyTo.value.toLowerCase();
+		const currFrom = currencyFrom.value.toLowerCase();
+		const url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currFrom}/${currTo}.json`;
+		const response = await fetch(url);
+		const data = await response.json();
+		let currAmount = currencyAmount.value;
+		if (currAmount === "" || currAmount <= 0) {
+			currAmount = 1;
+			currencyAmount.value = 1;
+		}
+		const currConverted = (currAmount * data[currTo]).toFixed(2);
+		convertMsg.textContent = `${currAmount} ${currencyFrom.value} = ${currConverted} ${currencyTo.value}`;
+	} catch (error) {
+		alert(error.message);
 	}
-	const currConverted = (currAmount * data[currTo]).toFixed(2);
-	convertMsg.textContent = `${currAmount} ${currencyFrom.value} = ${currConverted} ${currencyTo.value}`;
 };
 
 dropMenu.forEach((dropDown) => {
@@ -46,6 +50,7 @@ dropMenu.forEach((dropDown) => {
 		const image = changed.parentElement.querySelector("img");
 		image.src = `https://flagsapi.com/${countryCode}/flat/24.png`;
 		image.alt = countryCode;
+		updateExchange();
 	});
 });
 
